@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wolf, the Goat, and the Cabbage</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script defer src="client.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 class="text">
+        The Wolf, the Goat, and the Cabbage
+    </h1>
+    <h2 class="text">
+        You are a traveler who needs to cross a river, along with your wolf, your goat, and your supply of cabbage. Your
+        boat is only big enough to hold yourself and one of these three tag alongs. The wolf wants to eat the goat, and
+        the goat wants to eat up all the cabbage, but both animals will behave as long as you are right there on the
+        same side with them. How can you cross the river with everything intact?
+    </h2>
+
+
+    <div id="app">
+        {{message}}
+        <div class="grid">
+            <div class="left">
+                <img src="boatLeft.jpg" v-if="boat === 0">
+                <img src="wolf.jpg" v-if="wolf === 0">
+                <img src="cabbage.jpg" v-if="cabb === 0">
+                <img src="goat.jpg" v-if="goat === 0">
+
+            </div>
+            <div class="right">
+                <img src="boatRight.jpg" v-if="boat === 1">
+                <img src="cabbage.jpg" v-if="cabb === 1">
+                <img src="wolf.jpg" v-if="wolf === 1">
+                <img src="goat.jpg" v-if="goat === 1">
+            </div>
+        </div>
+
+        <div>
+            <button @click="moveGoat" v-if="gameState === 0">Move Goat</button>
+            <button @click="moveWolf" v-if="gameState === 0">Move Wolf</button>
+            <Button @click="moveCabb" v-if="gameState === 0">Move Cabbage</Button>
+            <button @click="moveBoat" v-if="gameState === 0">Move Boat</button>
+            <button @click="restart" v-if="gameState === 1">Restart</button>
+        </div>
+        <p>
+            {{message}}
+        </p>
+    </div>
+</body>
+
+</html>

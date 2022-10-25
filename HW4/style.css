@@ -1,0 +1,63 @@
+.grid {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    width: 100%;
+    box-sizing: border-box;
+    grid-template-columns: 1fr 1fr;
+    padding: 20px;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+body {
+    background-image: url("river.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 460px;
+}
+
+.text {
+    padding: 5px;
+    background-color: darkslategrey;
+    border: 3px ridge;
+    color: rgb(255, 255, 255);
+}
+
+img {
+    width: 200px;
+    padding: 10px;
+    margin-right: 30px;
+}
+
+button {
+    font-size: 14px;
+    line-height: 1;
+    border-radius: 500px;
+    border: 2px ridge;
+    min-width: 160px;
+    font-weight: 700;
+    text-align: center;
+    padding: 17px 48px;
+    color: #fff;
+    background-color: darkslategrey;
+    height: 48px;
+    margin: 5px;
+}
+
+button:hover {
+    transform: scale(1.04);
+    background-color: rgb(65, 139, 139);
+}
+
+p {
+    color: #fff;
+}

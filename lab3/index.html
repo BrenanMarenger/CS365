@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script defer src="client.js"></script>
+</head>
+
+<body>
+    <h1>The Clever Cook</h1>
+    <h2>You are a cook who needs to measure out exactly 4 cups of wine. The trouble is you only have a 3 cup container,
+        a 5 cup container, and a whole vat of wine. Figure out how to measure out exactly 4 cups of wine.</h2>
+    <div id="app">
+        <img v-bind:src="'cupImages/' + cup3 + 'OutOf3.jpg'">
+        <img v-bind:src="'cupImages/' + cup5 + 'OutOf5.jpg'">
+        <br>
+        <button v-on:click="fill3" type="button">Fill 3 cup</button>
+        <button v-on:click="fill5" type="button">Fill 5 cup</button>
+        <button v-on:click="dump3" type="button">Dump 3 cup</button>
+        <button v-on:click="dump5" type="button">Dump 5 cup</button>
+        <button v-on:click="pour3To5" type="button">Pour 3 cup into 5 cup</button>
+        <button v-on:click="pour5To3" type="button">Pour 5 cup into 3 cup</button>
+        <button v-on:click="cup3=0,cup5=0,moveList=[]">Reset</button>
+        <br>
+        {{message}}
+        <br>
+        <p v-for="m of moveList" v-bind:key="m.id">{{m.text}}</p>
+
+
+    </div>
+
+</body>
+
+</html>
