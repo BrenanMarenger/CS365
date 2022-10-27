@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script defer src="client.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+
+    <title>Lab4</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="canv">
+            <h2 v-if="nodes.length > 1">
+                Spline with {{nodes.length}} nodes
+            </h2>
+            <h2 v-else-if="nodes.length != 0">
+                Spline with {{nodes.length}} node
+            </h2>
+
+            <canvas class="left" width="400" height="400" ref="splineDisplay">
+                Sorry, your browser doesn't support canvas.
+            </canvas>
+            <br>
+            <input type="color" v-model="backColor" v-on:input="redrawEverything">&nbsp;
+            <input type="number" min="1" max="100" v-model="linesPerNode" v-on:input="redrawEverything">
+            <button v-on:click="addNode">Add Node</button>
+        </div>
+        <div>
+            <h2>Node list to generate spline</h2>
+            <div v-for="(n,index) of nodes" :key="n.id" class="good">
+                <span>
+                    x: <input @input="redrawEverything" type="number" v-model.number="n.x" min="0" max="400" step="10">
+                    <br>
+                    <input @input="redrawEverything" type="range" v-model.number="n.x" min="0" max="400" step="10">
+                </span>
+                <span>
+                    y: <input @input="redrawEverything" type="number" v-model.number="n.y" min="0" max="400" step="10">
+                    <br>
+                    <input @input="redrawEverything" type="range" v-model.number="n.y" min="0" max="400" step="10">
+                </span>
+                <span>
+                    dy: <input @input="redrawEverything" type="number" v-model.number="n.dy" min="-10" max="10"
+                        step="0">
+                    <br>
+                    <input @input="redrawEverything" type="range" v-model.number="n.dy" min="-10" max="10" step="0">
+                </span>
+                <span>
+                    dx: <input @input="redrawEverything" type="number" v-model.number="n.dx" min="-10" max="10"
+                        step="0">
+                    <br>
+                    <input @input="redrawEverything" type="range" v-model.number="n.dx" min="-10" max="10" step="0">
+                </span>
+                <input @input="redrawEverything" type="color" v-model="n.color" style="margin: 5px;">
+                <button @click="deleteNode(index)" style="margin: 5px;">❌</button>
+                </span>
+                <br>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
